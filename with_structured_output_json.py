@@ -10,7 +10,6 @@ load_dotenv()
 llm = HuggingFaceEndpoint(
     repo_id="meta-llama/Llama-3.3-70B-Instruct", 
     task="text-generation",
-    huggingfacehub_api_token=os.getenv("HUGGINGFACE_API_TOKEN") 
 )
 
 model = ChatHuggingFace(llm=llm)

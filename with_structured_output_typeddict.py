@@ -8,8 +8,7 @@ load_dotenv()
 # Use a model that supports Tool Calling / Structured Output
 llm = HuggingFaceEndpoint(
     repo_id="meta-llama/Llama-3.3-70B-Instruct", 
-    task="text-generation",
-    huggingfacehub_api_token=os.getenv("HUGGINGFACE_API_TOKEN") 
+    task="text-generation" 
 )
 
 model = ChatHuggingFace(llm=llm)
