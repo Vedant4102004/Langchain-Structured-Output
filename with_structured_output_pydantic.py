@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 
 load_dotenv()
 
-# Use a model that supports Tool Calling / Structured Output
+
 llm = HuggingFaceEndpoint(
     repo_id="meta-llama/Llama-3.3-70B-Instruct", 
     task="text-generation"
@@ -23,7 +23,7 @@ class Review(TypedDict):
     name: Optional[str] = Field(default=None, description="Write the name of the reviewer")
     
 
-# This wraps the model to force JSON output based on your TypedDict
+# This wraps the model to force JSON output based on TypedDict
 structured_model = model.with_structured_output(Review)
 
 text = """I recently upgraded to the Samsung Galaxy S24 Ultra, and I must say, it’s an absolute powerhouse! The Snapdragon 8 Gen 3 processor makes everything lightning fast—whether I’m gaming, multitasking, or editing photos. The 5000mAh battery easily lasts a full day even with heavy use, and the 45W fast charging is a lifesaver.
@@ -42,5 +42,4 @@ Review by Nitish Singh"""
 
 result = structured_model.invoke(text)
 
-# FIX: Access keys that actually exist in your TypedDict
 print(result)
